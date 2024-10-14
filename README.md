@@ -432,3 +432,14 @@ Grep -R . in the case of this ctf can be used to print out the entire website pa
 
 cat *  cats out everything in a directory
 
+Hash notes
+
+Unix style password hashes are very easy to recognise, as they have a prefix. The prefix tells you the hashing algorithm used to generate the hash. The standard format is$format$rounds$salt$hash.
+
+Windows passwords are hashed using NTLM, which is a variant of md4. They're visually identical to md4 and md5 hashes, so it's very important to use context to work out the hash type.
+
+On Linux, password hashes are stored in /etc/shadow. This file is normally only readable by root. They used to be stored in /etc/passwd, and were readable by everyone.
+
+On Windows, password hashes are stored in the SAM. Windows tries to prevent normal users from dumping them, but tools like mimikatz exist for this. Importantly, the hashes found there are split into NT hashes and LM hashes.
+
+https://hashcat.net/wiki/doku.php?id=example_hashes These are example hashes for hash cracking
