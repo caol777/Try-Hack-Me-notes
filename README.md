@@ -359,7 +359,8 @@ we were able to find a few directories int he website.
 We found /content, /admin, /assets, and /modules. All of these are important except for assets
 After we find that we look at the page source and notice that the website only accepts jpeg files.  
 
-![[Pasted image 20241007173702.png]]
+![Screenshot 2024-10-07 173908](https://github.com/user-attachments/assets/ab9a764c-9e78-4267-8ac2-ca09823f7f9d)
+
 If you use inspect element you can see that the background image is stored in the content dir as /content/LOL.jpg this shows where our .jpg files are stored and which this comess our next gobuster command that takes and list out the jpg files in the content directory 
 
 gobuster dir -u http://jewel.uploadvulns.thm/content -w wrd -x jpg
@@ -367,7 +368,9 @@ This command searched for .jpg files in the content directory using the wordlist
 
 After that we had to delete the client side filter which we did using burp suite 
 To find the filter we had to disable our filter on .js files within burpsuite and then also use ctrl f5 to clear our cache when reloading the site. This let our burp suite intercept the upload.js file while we then intercepted the response and deleted the cilent side filters. 
-![[Pasted image 20241007174733.png]]
+
+
+![Screenshot 2024-10-07 174508](https://github.com/user-attachments/assets/e72697b1-16e4-4018-a93d-26ebb6915e9d)
 
 
 After we deleted the client side filters we still had the server side filter which was MIME filter. It only let files with the .jpg extenstion in the server so after you change the extension using mv "file name" you would just upload the file as a .jpeg file. 
