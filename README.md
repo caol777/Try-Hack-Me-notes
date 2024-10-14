@@ -223,10 +223,14 @@ Security Misconfiguration - Security Misconfigurations are distinct from the oth
 
 Vulnerable and Outdated Components - Occasionally, you may find that the company/entity you're pen-testing is using a program with a well-known vulnerability. Look on WPScan and Exploit-DB.
  
-Identification and Authentication Failures
-Software and Data Integrity Failures
-Security Logging & Monitoring Failures
-Server-Side Request Forgery (SSRF)
+Identification and Authentication Failures - Authentication and session management constitute core components of modern web applications. Authentication allows users to gain access to web applications by verifying their identities. The most common form of authentication is using a username and password mechanism. A user would enter these credentials, and the server would verify them. The server would then provide the users' browser with a session cookie if they are correct. A session cookie is needed because web servers use HTTP(S) to communicate, which is stateless. Attaching session cookies means the server will know who is sending what data. The server can then keep track of users' actions. 
+
+Software and Data Integrity Failures - This vulnerability arises from code or infrastructure that uses software or data without using any kind of integrity checks. Since no integrity verification is being done, an attacker might modify the software or data passed to the application, resulting in unexpected consequences. There are mainly two types of vulnerabilities in this category:
+
+
+Security Logging & Monitoring Failures - When web applications are set up, every action performed by the user should be logged. Logging is important because, in the event of an incident, the attackers' activities can be traced. Once their actions are traced, their risk and impact can be determined. Without logging, there would be no way to tell what actions were performed by an attacker if they gain access to particular web applications. The more significant impacts of these include:
+
+Server-Side Request Forgery (SSRF) - This type of vulnerability occurs when an attacker can coerce a web application into sending requests on their behalf to arbitrary destinations while having control of the contents of the request itself. SSRF vulnerabilities often arise from implementations where our web application needs to use third-party services.
 
 
 ----------------------------------------------------------------------------------------------------------
