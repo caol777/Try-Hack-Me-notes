@@ -700,4 +700,20 @@ Cryptanalysis - Attacking cryptography by finding a weakness in the underlying m
 
 Alice and Bob - Used to represent 2 people who generally want to communicate. They’re named Alice and Bob because this gives them the initials A and B. https://en.wikipedia.org/wiki/Alice_and_Bob for more information, as these extend through the alphabet to represent many different people involved in communication.
 
-WARNING: This room is very theory heavy. Cryptography is a big topic, and this room is designed to just scratch the surface.
+What is PGP?
+PGP stands for Pretty Good Privacy. It’s a software that implements encryption for encrypting files, performing digital signing and more.
+
+What is GPG?
+GnuPG or GPG is an Open Source implementation of PGP from the GNU project. You may need to use GPG to decrypt files in CTFs. With PGP/GPG, private keys can be protected with passphrases in a similar way to SSH private keys. If the key is passphrase protected, you can attempt to crack this passphrase using John The Ripper and gpg2john. The key provided in this task is not protected with a passphrase.
+
+The man page for GPG can be found online here.
+
+What about AES?
+AES, sometimes called Rijndael after its creators, stands for Advanced Encryption Standard. It was a replacement for DES which had short keys and other cryptographic flaws.
+
+AES and DES both operate on blocks of data (a block is a fixed size series of bits).
+
+AES is complicated to explain, and doesn’t seem to come up as often. If you’d like to learn how it works, here’s an excellent video from Computerphile https://www.youtube.com/watch?v=O4xNJsjtN6E
+
+![Screenshot_2024-10-21_20_51_46](https://github.com/user-attachments/assets/f9104353-2fa8-43ab-85f5-a2c262b98617)
+
